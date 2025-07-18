@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/CadPessoa.css">
     <title>Cadastro Doador</title>
 </head>
 <body>
     <div class="InfoVoluntary">
         <form action="">
-            <h1>Preencha as informações para realizar o cadastro</h1>
+           <div class="forms">
+             <h1>Preencha as informações para realizar o cadastro</h1>
             <label for="">
                 Nome:
-                <input type="text" name="name" placeholder="Nome Completo" required>
+                <input type="text" size="100" name="name" placeholder="Nome Completo" required>
             </label>
-
+            <label for="">
+                CPF:
+                <input type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
+            </label>
             <label for="">
                 Idade:
                 <input type="text" name="age" placeholder="Idade" required>
@@ -33,16 +38,22 @@
                 <input type="text" name="contact" placeholder="Telefone 2">
             </label>
 
+            <div class="specialty">
+                    <input type="checkbox" name="">Voluntário<br>
+                    <input type="checkbox" name="">Doador<br>
+                    <input type="checkbox" name="">Adotante<br>
+            </div>
+
             <label for="">
-                <select name="" id="">
-                    <option value="">Voluntário</option>
-                    <option value="">Doador</option>
-                    <option value="">Adotante</option>
-                </select>
+                Senha: <br>
+                <input type="password" name="password" placeholder="Digite a senha" required> <br>
+                Confirme a senha: <br>
+                <input type="password" name="password" placeholder="Confirme a senha" required>
             </label>
 
             <button type="submit">Enviar</button>
             <button type="reset">Apagar</button>
+           </div>
         </form>  
     </div>
 </body>
