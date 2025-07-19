@@ -1,60 +1,66 @@
-.sidebar {
-  width: 250px;
-  height: 100vh;
-  background: linear-gradient(to bottom, #212121, #1c1c1c);
+
+
+/* MENU HORIZONTAL */
+
+.menu{
+  background-color: #2c2c2c;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c2c2c;
+  padding: 10px 30px;
   color: white;
-  padding: 20px 0;
-  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  padding: 0 20px;
-  margin-bottom: 30px;
 }
 
 .logo .material-icons {
-  font-size: 28px;
-  margin-right: 10px;
+  margin-right: 8px;
+  font-size: 26px;
 }
 
 .logo h2 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   margin: 0;
 }
 
 .menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  gap: 20px;
 }
 
-.menu li {
+.menu a {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
-  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
   transition: background 0.3s;
   font-size: 15px;
 }
 
-.menu li .material-icons {
-  margin-right: 10px;
+.menu a .material-icons {
+  margin-right: 6px;
   font-size: 20px;
 }
 
-.menu li:hover {
-  background-color: #2c2c2c;
+.menu a:hover {
+  background-color: #444;
 }
 
-.menu li.active {
+.menu a.active {
   background-color: #1976d2;
-  border-radius: 6px;
-}
-
-.menu a{
-  color: white;
-  text-decoration:none;
 }
