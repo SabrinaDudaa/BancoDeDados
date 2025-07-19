@@ -53,3 +53,8 @@
   background-color: #1976d2;
   border-radius: 6px;
 }
+
+.menu a{
+  color: white;
+  text-decoration:none;
+}
