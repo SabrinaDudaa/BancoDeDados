@@ -12,11 +12,16 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+}
+.InfoVoluntary h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.forms{
+    margin-left: 50px;
+}
 
 .forms label{
     display: block;
