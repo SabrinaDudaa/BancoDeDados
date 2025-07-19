@@ -15,6 +15,7 @@ body{
   min-height: 100vh;
   background-color: #f4f4f4;
 }
+
 .InfoVoluntary h1{
     display: flex;
     align-items: center;
