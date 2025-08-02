@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link rel="stylesheet" href="../style/Cadastro.css">
-    <link rel="stylesheet" href="../style/Menu.css">
+     <link rel="stylesheet" href="/style/Cadastro.css" />
+    <link rel="stylesheet" href="/style/Menu.css" />
     <title>Cadastros</title>
 </head>
 <body>
    <nav class="menu">
-    <a href="InfoGeral.html" class="active">
+    <a href="index.html" class="active">
       <span class="material-icons">dashboard</span>
       Informações Gerais
     </a>
@@ -28,8 +28,28 @@
     </a>
   </nav>
 
-  <h1> AQUI MOSTRARÁ AS PESSOAS CADASTRADAS <br> E SUAS DEVIDAS INFORMAÇÕES</h1>
+  <table id="tabelaPessoas" border="1">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Idade</th>
+        <th>Email</th>
+        <th>CEP</th>
+        <th>Rua</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>UF</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+ 
+  
 
    <a href="CadPessoa.html"><input type="button" value="Novo Cadastro"></a>
+
+    <script src="../js/validacao/listaPessoas.js"></script>
 </body>
 </html>

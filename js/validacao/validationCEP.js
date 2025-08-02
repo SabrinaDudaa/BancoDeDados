@@ -2,11 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const cepInput = document.getElementById('cep');
   const cidadeInput = document.getElementById('cidade');
   const ufInput = document.getElementById('uf');
-
-  if (!cepInput) {
-    console.error('Campo #cep não encontrado.');
-    return;
-  }
+  const ruaInput = document.getElementById('rua');
+  const bairroInput = document.getElementById('bairro');
 
   cepInput.addEventListener('blur', async () => {
     const cep = cepInput.value.replace(/\D/g, '');
@@ -24,11 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('CEP não encontrado.');
         cidadeInput.value = '';
         ufInput.value = '';
+        ruaInput.value = '';
+        bairroInput.value = '';
         return;
       }
 
       cidadeInput.value = data.localidade;
       ufInput.value = data.uf;
+      ruaInput.value = data.logradouro;
+      bairroInput.value = data.bairro;
     } catch (error) {
       console.error('Erro ao buscar o CEP:', error);
       alert('Erro ao consultar o CEP.');
