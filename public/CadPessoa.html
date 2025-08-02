@@ -34,22 +34,40 @@
             <h1>Registro Pessoa</h1>
            <div class="forms">
             <label for="">
-                Nome:
-                <input type="text" size="100" name="name" placeholder="Nome Completo" required>
+                Nome Completo:
+                <input type="text" size="100" name="name" placeholder="" required>
             </label>
-            <label for="">
-                CPF:
-                <input type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
-                Idade:
-                <input type="text" name="age" placeholder="Idade" required>
-            </label>
-            <label for="">
-                E-mail:
-                <input type="email" name="email" placeholder="E-mail">
-            </label>
+           <div class="linha">
+            <div class="campo">
+              <label for="cpf">CPF:</label>
+              <input type="text" name="cpf" placeholder="xxxxxxxxxxx" required>
+            </div>
+
+            <div class="campo">
+              <label for="age">Idade:</label>
+              <input type="text" size="5" name="age" placeholder="" required>
+            </div>
+
+            <div class="campo">
+              <label for="email">E-mail:</label>
+              <input type="email" size="50" name="email" placeholder="">
+            </div>
+          </div>
             <label for="">
                 Endereço: 
-            <input type="text" name="address" placeholder="Endereço completo" required>
+            <input type="text" size="100" name="address" placeholder="" required>
+            </label>
+            <label for="cep">
+                CEP: 
+            <input type="text" id="cep" name="cep" placeholder="00000-000">
+            </label>
+            <label for="cidade">
+                Cidade: 
+            <input type="text" id="cidade" size="40" name="cidade" placeholder="" required>
+            </label>
+            <label for="">
+                UF: 
+            <input type="text" id="uf" size="5" name="uf" required>
             </label>
             <label for="">
                 Telefones:
@@ -68,5 +86,9 @@
            </div>
         </form>  
     </div>
+
+
+    <script src="../js/validacao/validationCEP.js"></script>
+    <script src="../js/validacao/validantionCPF.js"></script>
 </body>
 </html>

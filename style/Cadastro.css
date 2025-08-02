@@ -29,7 +29,29 @@ body{
 .forms label{
     display: block;
     width: 100%;
-     line-height: 3;
+    line-height: 3;
+}
+
+.linha {
+  display: flex;
+  gap: 20px; 
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+input::placeholder{
+    text-align: center;
+}
+
+input[type="text"], input[type="email"] {
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
 }
 
 .specialty{
