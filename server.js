@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Página principal
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'CadPessoa.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Rota POST para cadastrar pessoa

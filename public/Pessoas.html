@@ -1,55 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link rel="stylesheet" href="/style/Cadastro.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/Cadastro.css" />
     <link rel="stylesheet" href="/style/Menu.css" />
     <title>Cadastros</title>
-</head>
-<body>
-   <nav class="menu">
-    <a href="index.html" class="active">
-      <span class="material-icons">dashboard</span>
-      Informações Gerais
-    </a>
-    <a href="Doacoes.html">
-      <span class="material-icons">article</span>
-      Doações
-    </a>
-    <a href="Pessoas.html">
-      <span class="material-icons">people</span>
-      Cadastros
-    </a>
-    <a href="Pets.html">
-      <span class="material-icons">pets</span>
-      Animais
-    </a>
-  </nav>
+  </head>
+  <body>
+    <nav class="menu">
+      <a href="index.html" class="active">
+        <span class="material-icons">dashboard</span>
+        Informações Gerais
+      </a>
+      <a href="Doacoes.html">
+        <span class="material-icons">article</span>
+        Doações
+      </a>
+      <a href="Pessoas.html">
+        <span class="material-icons">people</span>
+        Cadastros
+      </a>
+      <a href="Pets.html">
+        <span class="material-icons">pets</span>
+        Animais
+      </a>
+    </nav>
 
-  <table id="tabelaPessoas" border="1">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>CPF</th>
-        <th>Idade</th>
-        <th>Email</th>
-        <th>CEP</th>
-        <th>Rua</th>
-        <th>Bairro</th>
-        <th>Cidade</th>
-        <th>UF</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
 
- 
-  
+    <div id="listaPessoas"></div>
+    
+    
+    
+      
+    <a href="CadPessoa.html"><button class="button-newCad">Novo Cadastro</button></a>
+      
+    
 
-   <a href="CadPessoa.html"><input type="button" value="Novo Cadastro"></a>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/validacao/listaPessoas.js"></script>
-</body>
+  </body>
 </html>
