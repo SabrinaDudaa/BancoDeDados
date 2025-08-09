@@ -1,5 +1,5 @@
 CREATE TABLE Cidade (
-    idCidade INTEGER NOT NULL,
+    idCidade SERIAL NOT NULL,
     nomeCidade VARCHAR(100) NOT NULL,
     Bairro  VARCHAR(50) NOT NULL,
     UF VARCHAR(50) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE Cidade (
 );
 
 CREATE TABLE Endereco (
-    idEndereco INTEGER NOT NULL,
+    idEndereco SERIAL NOT NULL,
     Logradouro VARCHAR(100) NOT NULL,
     Referencia VARCHAR(100),
     idCidade INTEGER NOT NULL, 
@@ -17,7 +17,7 @@ CREATE TABLE Endereco (
 );
 
 CREATE TABLE Pessoa (
-    idPessoa INTEGER NOT NULL,
+    idPessoa SERIAL NOT NULL,
     nomePessoa VARCHAR(100) NOT NULL,
     Idade INTEGER NOT NULL,
     Email VARCHAR(100) NOT NULL,

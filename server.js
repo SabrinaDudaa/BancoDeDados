@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Rota POST para cadastrar pessoa
+/* -------------------- ROTAS PESSOA -------------------- */
 app.post('/api/pessoas', async (req, res) => {
   const {
     nomePessoa,
@@ -37,7 +37,6 @@ app.post('/api/pessoas', async (req, res) => {
   } = req.body;
 
   try {
-    // Inserir cidade (ou bairro/UF) se não existir
     const cidadeResult = await db.query(
       `INSERT INTO Cidade (nomeCidade, Bairro, UF) 
        VALUES ($1, $2, $3)
@@ -46,7 +45,6 @@ app.post('/api/pessoas', async (req, res) => {
     );
     const idCidade = cidadeResult.rows[0].idcidade;
 
-    // Inserir endereço
     const enderecoResult = await db.query(
       `INSERT INTO Endereco (Logradouro, Referencia, idCidade)
        VALUES ($1, $2, $3)
@@ -55,7 +53,6 @@ app.post('/api/pessoas', async (req, res) => {
     );
     const idEndereco = enderecoResult.rows[0].idendereco;
 
-    // Inserir pessoa
     await db.query(
       `INSERT INTO Pessoa 
        (nomePessoa, CPF, Idade, Email, Telefone1, Telefone2, idEndereco, idCidade)
@@ -79,7 +76,6 @@ app.post('/api/pessoas', async (req, res) => {
   }
 });
 
-// Rota GET para listar pessoas
 app.get('/api/pessoas', async (req, res) => {
   try {
     const result = await db.query(`
@@ -97,7 +93,35 @@ app.get('/api/pessoas', async (req, res) => {
   }
 });
 
-// Inicia o servidor
+/* -------------------- ROTAS PET -------------------- */
+app.post('/api/pet', async (req, res) => {
+  const { Especie, nomePet, Raca, Chegada, Idade } = req.body;
+
+  try {
+    await db.query(
+      `INSERT INTO Pet (Especie, nomePet, Raca, Chegada, Idade) 
+       VALUES ($1, $2, $3, $4, $5)`,
+      [Especie, nomePet, Raca, Chegada, parseInt(Idade)]
+    );
+
+    res.status(201).json({ message: 'Pet cadastrado com sucesso!' });
+  } catch (error) {
+    console.error('Erro ao cadastrar pet:', error);
+    res.status(500).json({ error: 'Erro ao cadastrar pet' });
+  }
+});
+
+app.get('/api/pet', async (req, res) => {
+  try {
+    const result = await db.query(`SELECT * FROM Pet ORDER BY idPet DESC`);
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Erro ao buscar pets:', error);
+    res.status(500).json({ error: 'Erro ao buscar pets' });
+  }
+});
+
+/* -------------------- INICIAR SERVIDOR -------------------- */
 app.listen(PORT, () => {
   console.log(`✅ Servidor rodando em http://localhost:${PORT}`);
 });

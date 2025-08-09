@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link rel="stylesheet" href="/style/Cadastro.css" />
     <link rel="stylesheet" href="/style/Menu.css" />
+    <link rel="stylesheet" href="/style/ListaPet.css">
     <title>Pets</title>
 </head>
 <body>
@@ -29,9 +30,12 @@
   </nav>
 
 
-  <h1> AQUI MOSTRARÁ OS ANIMAIS CADASTRADOS <br> E SUAS DEVIDAS INFORMAÇÕES</h1>
+  <div id="listaPets"></div>
 
 
-  <a href="CadPet.html"><input type="button" value="Novo Cadastro"></a>
+  <a href="CadPet.html"><button class="button-newCad">Novo Cadastro</button></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/validacao/listaPet.js"></script>
 </body>
 </html>

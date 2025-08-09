@@ -27,36 +27,45 @@
       <span class="material-icons">pets</span>
       Animais
     </a>
-  </nav>
+</nav>
 
-    <form action="">
-        <h1>Registro Pet</h1>
-        <div class="forms">
-            <label for="">
-                Nome:
-                <input type="text">
-            </label>
-            <label for="">
-                Idade:
-                <input type="text">
-            </label>
-            <label for="">
-                Data de Chegada:
-                <input type="date" name="" id="">
-            </label>
-            <label for="">
-                Espécie:
-                <select name="especies" id="">
-                  <option value="">Cachorro</option>
-                  <option value="">Gato</option>
-                </select>
-                
-            </label>
-            <label for="">
-                Raça:
-                <input type="text">
-            </label>
+<div class="InfoPet">
+  <form id="formPet">
+    <h1>Registro Pet</h1>
+    <div class="forms">
+        <label for="nomePet">
+            Nome:
+            <input type="text" size="30" name="nomePet" required>
+        </label>
+        <label for="idadePet">
+            Idade:
+            <input type="text" size="10" name="idadePet">
+        </label>
+        <label for="dataChegada">
+            Data de Chegada:
+            <input type="text" size="35" name="dataChegada" required>
+        </label>
+        <label for="especiePet">
+            Espécie:
+            <input type="text" size="20" name="especiePet" required>
+        </label>
+        <label for="racaPet">
+            Raça:
+            <input type="text" size="35" name="racaPet" required>
+        </label>
+
+        <div class="custom-button">
+          <div class="button-container">
+            <button class="button-submit" type="submit">Enviar</button>
+          </div>
+          <div class="button-container">
+            <button class="button-reset" type="reset">Apagar</button>
+          </div>
         </div>
-    </form>
+    </div>
+  </form>
+</div>
+
+<script src="/js/validacao/enviaPet.js"></script>
 </body>
 </html>
