@@ -121,6 +121,32 @@ app.get('/api/pet', async (req, res) => {
   }
 });
 
+// Rota para contar pessoas
+app.get('/api/quantidade-pessoas', async (req, res) => {
+    try {
+        const result = await db.query('SELECT COUNT(*) AS quantidade FROM Pessoa');
+        res.json({ quantidade: parseInt(result.rows[0].quantidade, 10) });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao buscar quantidade de pessoas');
+    }
+});
+
+// Rota para contar pets por espécie
+app.get('/api/pets-por-tipo', async (req, res) => {
+    try {
+        const result = await db.query(`
+            SELECT Especie, COUNT(*) AS quantidade
+            FROM Pet
+            GROUP BY Especie
+        `);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao buscar dados de pets por tipo');
+    }
+});
+
 /* -------------------- INICIAR SERVIDOR -------------------- */
 app.listen(PORT, () => {
   console.log(`✅ Servidor rodando em http://localhost:${PORT}`);

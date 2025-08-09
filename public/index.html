@@ -6,7 +6,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/style/Cadastro.css" />
     <link rel="stylesheet" href="/style/Menu.css" />
+    <link rel="stylesheet" href="/style/Dashboard.css">
     <title>Informações Gerais</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav class="menu">
@@ -28,6 +30,16 @@
     </a>
   </nav>
 
-  <h1> AQUI MOSTRARÁ AS INFORMAÇÕES MAIS GERAIS <br> (QUANTIDADE DE CADASTROS, QUANTIDADE DE DOAÇÕES DO MÊS E ETC...)</h1>
+     <h1>📊 Dashboard</h1>
+    <div class="dashboard">
+        <div class="card">
+            <canvas id="graficoPessoas"></canvas>
+        </div>
+        <div class="card">
+            <canvas id="graficoPets"></canvas>
+        </div>
+    </div>
+
+  <script src="/js/Cadastros/QuantPet.js"></script>
 </body>
 </html>
