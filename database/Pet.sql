@@ -1,0 +1,9 @@
+CREATE TABLE Pet(
+    idPet SERIAL NOT NULL,
+    Especie VARCHAR(100) NOT NULL,
+    nomePet VARCHAR(100) NOT NULL,
+    Raca VARCHAR(100) NOT NULL,
+    Chegada VARCHAR(100) NOT NULL,
+    Idade INTEGER NOT NULL,
+        CONSTRAINT pkPet PRIMARY KEY (idPet)
+);

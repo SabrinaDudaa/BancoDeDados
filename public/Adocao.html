@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Adoção</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="/style/Cadastro.css" />
+  <link rel="stylesheet" href="/style/Menu.css" />
+  <style>
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    tr.selected { background-color: #a8d5ff; }
+    input[type="search"] { margin-bottom: 0.5rem; padding: 0.3rem; width: 100%; box-sizing: border-box; }
+    .container { max-width: 800px; margin: auto; }
+    label, button { margin-top: 1rem; display: block; }
+  </style>
+</head>
+<body>
+  <nav class="menu">
+    <a href="index.html"><span class="material-icons">dashboard</span> Informações Gerais</a>
+    <a href="Doacoes.html"><span class="material-icons">article</span> Doações</a>
+    <a href="Pessoas.html"><span class="material-icons">people</span> Cadastros</a>
+    <a href="Pets.html"><span class="material-icons">pets</span> Animais</a>
+    <a href="Adocao.html" class="active"><span class="material-icons">article</span> Adoção</a>
+  </nav>
+
+  <div class="container">
+    <h1>Cadastro de Adoção</h1>
+
+    <section>
+      <h2>Adotantes</h2>
+      <input type="search" id="searchAdotante" placeholder="Buscar adotante por nome" />
+      <table id="tableAdotantes">
+        <thead>
+          <tr><th>Nome</th><th>CPF</th></tr>
+        </thead>
+        <tbody>
+          <!-- Dados dos adotantes preenchidos via JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Pets</h2>
+      <input type="search" id="searchPet" placeholder="Buscar pet por nome" />
+      <table id="tablePets">
+        <thead>
+          <tr><th>Nome</th><th>Espécie</th></tr>
+        </thead>
+        <tbody>
+          <!-- Dados dos pets preenchidos via JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <form id="formAdocao">
+      <label for="dataAdocao">
+        Data da Adoção:
+        <input type="date" id="dataAdocao" name="dataAdocao" required />
+      </label>
+
+      <div class="custom-button">
+          <div class="button-container">
+            <button class="button-submit" type="submit">Enviar</button>
+          </div>
+          <div class="button-container">
+            <button class="button-reset" type="reset">Apagar</button>
+          </div>
+        </div>
+    </form>
+  </div>
+
+  <script src="/js/validacao/enviaAdocao.js"></script>
+</body>
+</html>

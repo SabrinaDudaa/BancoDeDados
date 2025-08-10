@@ -3,6 +3,11 @@ document.getElementById('formPessoa').addEventListener('submit', async (e) => {
 
   const form = e.target;
 
+  // Coletar opções marcadas
+  const tiposSelecionados = Array.from(
+    document.querySelectorAll('input[name="tipoPessoa[]"]:checked')
+  ).map(checkbox => checkbox.value);
+
   const data = {
     nomePessoa: form.nomePessoa.value,
     cpf: form.cpf.value,
@@ -14,7 +19,8 @@ document.getElementById('formPessoa').addEventListener('submit', async (e) => {
     cidade: form.cidade.value,
     uf: form.uf.value,
     telefone1: form.telefone1.value,
-    telefone2: form.telefone2.value
+    telefone2: form.telefone2.value,
+    tiposPessoa: tiposSelecionados // Novo campo
   };
 
   // ✅ Log para depurar

@@ -34,6 +34,7 @@ app.post('/api/pessoas', async (req, res) => {
     uf,
     telefone1,
     telefone2,
+    tiposPessoa, // Novo campo para tipos de pessoa
   } = req.body;
 
   try {
@@ -53,10 +54,11 @@ app.post('/api/pessoas', async (req, res) => {
     );
     const idEndereco = enderecoResult.rows[0].idendereco;
 
-    await db.query(
+    const pessoaResult = await db.query(
       `INSERT INTO Pessoa 
        (nomePessoa, CPF, Idade, Email, Telefone1, Telefone2, idEndereco, idCidade)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+       RETURNING idPessoa`,
       [
         nomePessoa,
         cpf,
@@ -68,6 +70,16 @@ app.post('/api/pessoas', async (req, res) => {
         idCidade,
       ]
     );
+    const idPessoa = pessoaResult.rows[0].idpessoa;
+
+    const adotanteResult = await db.query(
+      `INSERT INTO Adotante 
+       (idAdotante)
+       VALUES ($1)
+       RETURNING idAdotante`,
+      [idPessoa]
+    );
+      
 
     res.status(201).json({ message: 'Pessoa cadastrada com sucesso!' });
   } catch (error) {
@@ -121,6 +133,45 @@ app.get('/api/pet', async (req, res) => {
   }
 });
 
+app.get('/api/pets-adotados-ativos', async (req, res) => {
+  try {
+    const result = await db.query(`
+      SELECT p.*
+      FROM Pet p
+      JOIN ContratoAdocao ca ON p.idPet = ca.Pet_idPet
+      WHERE ca.Situacao = 'Ativo'
+      ORDER BY p.nomePet
+    `);
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Erro ao buscar pets adotados ativos:', error);
+    res.status(500).json({ error: 'Erro ao buscar pets adotados ativos' });
+  }
+});
+
+app.get('/api/pets-disponiveis', async (req, res) => {
+  try {
+    const result = await db.query(`
+      SELECT *
+      FROM Pet p
+      WHERE p.idPet NOT IN (
+        SELECT Pet_idPet
+        FROM ContratoAdocao
+        WHERE Situacao = 'Ativo'
+      )
+      ORDER BY p.nomePet
+    `);
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Erro ao buscar pets disponíveis:', error);
+    res.status(500).json({ error: 'Erro ao buscar pets disponíveis' });
+  }
+});
+
+
+
 // Rota para contar pessoas
 app.get('/api/quantidade-pessoas', async (req, res) => {
     try {
@@ -146,6 +197,47 @@ app.get('/api/pets-por-tipo', async (req, res) => {
         res.status(500).send('Erro ao buscar dados de pets por tipo');
     }
 });
+
+/* -------------------- ROTAS ADOTANTE -------------------- */
+app.get('/api/adotantes', async (req, res) => {
+  try {
+    const result = await db.query(`
+      SELECT p.idPessoa, p.nomePessoa, p.cpf
+      FROM Adotante a
+      JOIN Pessoa p ON a.idAdotante = p.idPessoa
+      ORDER BY p.nomePessoa
+    `);
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Erro ao buscar adotantes:', error);
+    res.status(500).json({ error: 'Erro ao buscar adotantes' });
+  }
+});
+
+/* -------------------- ROTAS CONTRATO DE ADOÇÃO -------------------- */
+app.post('/api/adocao', async (req, res) => {
+  const { idAdotante, idPet, dataAdocao } = req.body;
+
+  if (!idAdotante || !idPet || !dataAdocao) {
+    return res.status(400).json({ error: 'Campos idAdotante, idPet e dataAdocao são obrigatórios' });
+  }
+
+  try {
+    await db.query(
+      `INSERT INTO ContratoAdocao (Situacao, Data, Pet_idPet, Adotante_idAdotante) 
+       VALUES ($1, $2, $3, $4)`,
+      ['Ativo', dataAdocao, idPet, idAdotante]
+    );
+
+    res.status(201).json({ message: 'Adoção cadastrada com sucesso!' });
+  } catch (error) {
+    console.error('Erro ao cadastrar adoção:', error);
+    res.status(500).json({ error: 'Erro ao cadastrar adoção' });
+  }
+});
+
+
 
 /* -------------------- INICIAR SERVIDOR -------------------- */
 app.listen(PORT, () => {

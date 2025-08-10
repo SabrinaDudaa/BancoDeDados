@@ -19,6 +19,10 @@
     <a href="Doacoes.html"><span class="material-icons">article</span> Doações</a>
     <a href="Pessoas.html"><span class="material-icons">people</span> Cadastros</a>
     <a href="Pets.html"><span class="material-icons">pets</span> Animais</a>
+    <a href="Adocao.html">
+      <span class="material-icons">article</span>
+      Adoção
+    </a>
   </nav>
 
   <div class="InfoVoluntary">
@@ -79,6 +83,21 @@
           <input type="text" id="telefone1" name="telefone1" placeholder="Telefone 1" required />
           <input type="text" id="telefone2" name="telefone2" placeholder="Telefone 2" />
         </label>
+
+        <!-- Nova seção de seleção múltipla -->
+        <fieldset>
+          <legend>Tipo de Pessoa</legend>
+          <label>
+            <input type="checkbox" name="tipoPessoa[]" value="Adotante" /> Adotante
+          </label>
+          <label>
+            <input type="checkbox" name="tipoPessoa[]" value="Doador" /> Doador
+          </label>
+          <label>
+            <input type="checkbox" name="tipoPessoa[]" value="Voluntario" /> Voluntário
+          </label>
+        </fieldset>
+        <!-- Fim nova seção -->
 
         <div class="custom-button">
           <div class="button-container">

@@ -1,19 +1,21 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/pet');
+    // Busca pets disponíveis (sem adoção ativa)
+    const responseDisponiveis = await fetch('http://localhost:3000/api/pets-disponiveis');
+    if (!responseDisponiveis.ok) throw new Error(`Erro na resposta pets disponíveis: ${responseDisponiveis.status}`);
+    const petsDisponiveis = await responseDisponiveis.json();
 
-    if (!response.ok) {
-      throw new Error(`Erro na resposta da API: ${response.status}`);
-    }
+    // Busca pets adotados (adoção ativa)
+    const responseAdotados = await fetch('http://localhost:3000/api/pets-adotados-ativos');
+    if (!responseAdotados.ok) throw new Error(`Erro na resposta pets adotados: ${responseAdotados.status}`);
+    const petsAdotados = await responseAdotados.json();
 
-    const pets = await response.json();
-    const listaContainer = document.querySelector('#listaPets');
+    // Containers no HTML
+    const containerDisponiveis = document.querySelector('#listaPetsDisponiveis');
+    const containerAdotados = document.querySelector('#listaPetsAdotados');
 
-    if (!Array.isArray(pets)) {
-      throw new Error('A resposta da API não é uma lista de pets.');
-    }
-
-    pets.forEach(pet => {
+    // Função para criar cards de pets
+    function criarCardPet(pet) {
       const wrapper = document.createElement('div');
       wrapper.classList.add('pet-wrapper');
 
@@ -41,10 +43,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         <span class="item">Chegada: ${pet.chegada || '---'}</span>
       `.replace(/\n/g, '').replace(/\s{2,}/g, '');
 
-      // Inicialmente escondido
       detalhes.style.display = 'none';
 
-      // Toggle visibilidade
       card.addEventListener('click', () => {
         const isVisible = detalhes.style.display === 'block';
         detalhes.style.display = isVisible ? 'none' : 'block';
@@ -55,10 +55,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       card.appendChild(basicInfo);
       wrapper.appendChild(card);
       wrapper.appendChild(detalhes);
-      listaContainer.appendChild(wrapper);
+
+      return wrapper;
+    }
+
+    // Preencher pets disponíveis
+    petsDisponiveis.forEach(pet => {
+      containerDisponiveis.appendChild(criarCardPet(pet));
+    });
+
+    // Preencher pets adotados
+    petsAdotados.forEach(pet => {
+      containerAdotados.appendChild(criarCardPet(pet));
     });
 
   } catch (error) {
-    console.error('Erro ao buscar animal:', error);
+    console.error('Erro ao buscar pets:', error);
   }
 });
