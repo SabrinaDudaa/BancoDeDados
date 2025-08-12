@@ -1,0 +1,278 @@
+/* Estilos gerais */
+body {
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Container principal */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Estilo para seções */
+section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Estilo comum para campos de busca */
+#searchAdotante, #searchPet {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 20px;
+  margin: 0 auto 20px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+#searchAdotante:focus, #searchPet:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+}
+
+/* Estilo comum para tabelas */
+#tableAdotantes, #tablePets {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.95em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#tableAdotantes thead tr, #tablePets thead {
+  background-color: #4a90e2;
+  color: white;
+  text-align: left;
+}
+
+#tableAdotantes th, #tableAdotantes td,
+#tablePets th, #tablePets td {
+  padding: 12px 15px;
+}
+
+#tableAdotantes tbody tr, #tablePets tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+#tableAdotantes tbody tr:nth-of-type(even),
+#tablePets tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+#tableAdotantes tbody tr:last-of-type {
+  border-bottom: 2px solid #4a90e2;
+}
+
+#tableAdotantes tbody tr:hover,
+#tablePets tbody tr:hover {
+  background-color: #f0f7ff;
+  cursor: pointer;
+}
+
+/* Estilo para o formulário */
+#formAdocao {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#formAdocao label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #555;
+}
+
+#dataAdocao {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  margin-top: 8px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+#dataAdocao:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+}
+
+/* Estilo para os botões */
+.custom-button {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.button-container {
+  flex: 1;
+  min-width: 120px;
+}
+
+.button-submit, .button-reset {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-submit {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.button-submit:hover {
+  background-color: #3a7bc8;
+  transform: translateY(-2px);
+}
+
+.button-reset {
+  background-color: #f5f5f5;
+  color: #555;
+  border: 1px solid #ddd;
+}
+
+.button-reset:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+/* Responsividade para telas médias (tablets) */
+@media (max-width: 992px) {
+  section {
+    padding: 15px;
+  }
+  
+  #tableAdotantes th, #tableAdotantes td,
+  #tablePets th, #tablePets td {
+    padding: 10px 12px;
+    font-size: 0.9em;
+  }
+}
+
+/* Responsividade para telas pequenas (mobile) */
+@media (max-width: 768px) {
+  .custom-button {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .button-container {
+    width: 100%;
+  }
+  
+  #dataAdocao {
+    max-width: 100%;
+  }
+}
+
+/* Responsividade para tabelas em mobile */
+@media (max-width: 600px) {
+  #tableAdotantes, #tablePets {
+    font-size: 0.85em;
+    box-shadow: none;
+  }
+  
+  #tableAdotantes thead, #tablePets thead {
+    display: none;
+  }
+  
+  #tableAdotantes tbody tr, #tablePets tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+  
+  #tableAdotantes tbody td, #tablePets tbody td {
+    display: block;
+    text-align: right;
+    padding-left: 45%;
+    position: relative;
+    border-bottom: 1px solid #eee;
+  }
+  
+  #tableAdotantes tbody td::before, 
+  #tablePets tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    width: calc(45% - 15px);
+    padding-right: 10px;
+    font-weight: bold;
+    text-align: left;
+    color: #4a90e2;
+  }
+  
+  #tableAdotantes tbody td:last-child,
+  #tablePets tbody td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+  section {
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  #searchAdotante, #searchPet {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  #tableAdotantes tbody td, #tablePets tbody td {
+    padding-left: 50%;
+  }
+  
+  #tableAdotantes tbody td::before, 
+  #tablePets tbody td::before {
+    width: calc(50% - 15px);
+  }
+  
+  #formAdocao label {
+    font-size: 14px;
+  }
+  
+  #dataAdocao {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .button-submit, .button-reset {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

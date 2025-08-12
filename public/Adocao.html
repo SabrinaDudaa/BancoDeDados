@@ -7,22 +7,28 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="/style/Cadastro.css" />
   <link rel="stylesheet" href="/style/Menu.css" />
-  <style>
-    table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
-    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
-    tr.selected { background-color: #a8d5ff; }
-    input[type="search"] { margin-bottom: 0.5rem; padding: 0.3rem; width: 100%; box-sizing: border-box; }
-    .container { max-width: 800px; margin: auto; }
-    label, button { margin-top: 1rem; display: block; }
-  </style>
+  <link rel="stylesheet" href="/style/Adocao.css">
 </head>
 <body>
   <nav class="menu">
-    <a href="index.html"><span class="material-icons">dashboard</span> Informações Gerais</a>
-    <a href="Doacoes.html"><span class="material-icons">article</span> Doações</a>
-    <a href="Pessoas.html"><span class="material-icons">people</span> Cadastros</a>
-    <a href="Pets.html"><span class="material-icons">pets</span> Animais</a>
-    <a href="Adocao.html" class="active"><span class="material-icons">article</span> Adoção</a>
+    <div class="menu-container">
+      <div class="logo">
+        <span class="material-icons">pets</span>
+        <h2>PetAdoption</h2>
+      </div>
+      <div class="menu-links">
+        <a href="index.html" class="active">
+          <span class="material-icons">dashboard</span> Informações Gerais
+        </a>
+        <a href="Doacoes.html"><span class="material-icons">article</span> Doações</a>
+        <a href="Pessoas.html"><span class="material-icons">people</span> Cadastros</a>
+        <a href="Pets.html"><span class="material-icons">pets</span> Animais</a>
+        <a href="Adocao.html">
+          <span class="material-icons">article</span>
+          Adoção
+        </a>
+      </div>
+    </div>
   </nav>
 
   <div class="container">
@@ -71,6 +77,8 @@
     </form>
   </div>
 
+
+  <script src="/js/menu/MenuSite.js"></script>
   <script src="/js/validacao/enviaAdocao.js"></script>
 </body>
 </html>

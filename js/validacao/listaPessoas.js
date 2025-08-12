@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     const response = await fetch('http://localhost:3000/api/pessoas');
-
+    
     if (!response.ok) {
       throw new Error(`Erro na resposta da API: ${response.status}`);
     }
 
     const pessoas = await response.json();
+    console.log('Pessoas recebidas:', pessoas); // Adicione este log
+    
     const listaContainer = document.querySelector('#listaPessoas');
 
     if (!Array.isArray(pessoas)) {
@@ -33,19 +35,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         <span class="cpf">CPF: <span>${pessoa.cpf}</span></span>
         <span class="idade">Idade: <span>${pessoa.idade}</span></span>
         <span class="email">Email: <span>${pessoa.email}</span></span>
+        <span class="tipo">Cargos: <span>${pessoa.cargos}</span></span>
       `;
 
       const detalhes = document.createElement('div');
-detalhes.classList.add('pessoa-detalhes');
-detalhes.innerHTML = `
-  <span class="item">CEP: ${pessoa.cep || '---'}</span>
-  <span class="item">Rua: ${pessoa.rua || '---'}</span>
-  <span class="item">Bairro: ${pessoa.bairro || '---'}</span>
-  <span class="item">Cidade: ${pessoa.cidade || '---'}</span>
-  <span class="item">UF: ${pessoa.uf || '---'}</span>
-  <span class="item">Telefone 1: ${pessoa.telefone1 || '---'}</span>
-  <span class="item">Telefone 2: ${pessoa.telefone2 || '---'}</span>
-`.replace(/\n/g, '').replace(/\s{2,}/g, '');
+      detalhes.classList.add('pessoa-detalhes');
+      detalhes.innerHTML = `
+        <span class="item">CEP: ${pessoa.cep || '---'}</span>
+        <span class="item">Rua: ${pessoa.rua || '---'}</span>
+        <span class="item">Bairro: ${pessoa.bairro || '---'}</span>
+        <span class="item">Cidade: ${pessoa.cidade || '---'}</span>
+        <span class="item">UF: ${pessoa.uf || '---'}</span>
+        <span class="item">Telefone 1: ${pessoa.telefone1 || '---'}</span>
+        <span class="item">Telefone 2: ${pessoa.telefone2 || '---'}</span>
+      `.replace(/\n/g, '').replace(/\s{2,}/g, '');
 
       // Inicialmente escondido
       detalhes.style.display = 'none';
@@ -66,5 +69,6 @@ detalhes.innerHTML = `
 
   } catch (error) {
     console.error('Erro ao buscar pessoas:', error);
+    alert('Erro ao carregar lista de pessoas. Verifique o console para mais detalhes.');
   }
 });

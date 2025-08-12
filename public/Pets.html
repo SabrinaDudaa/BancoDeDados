@@ -11,39 +11,41 @@
 </head>
 <body>
   <nav class="menu">
-    <a href="index.html" class="active">
-      <span class="material-icons">dashboard</span>
-      Informações Gerais
-    </a>
-    <a href="Doacoes.html">
-      <span class="material-icons">article</span>
-      Doações
-    </a>
-    <a href="Pessoas.html">
-      <span class="material-icons">people</span>
-      Cadastros
-    </a>
-    <a href="Pets.html">
-      <span class="material-icons">pets</span>
-      Animais
-    </a>
-    <a href="Adocao.html">
-      <span class="material-icons">article</span>
-      Adoção
-    </a>
+    <div class="menu-container">
+      <div class="logo">
+        <span class="material-icons">pets</span>
+        <h2>Shadow System</h2>
+      </div>
+      <div class="menu-links">
+        <a href="index.html" class="active">
+          <span class="material-icons">dashboard</span> Informações Gerais
+        </a>
+        <a href="Doacoes.html"><span class="material-icons">article</span> Doações</a>
+        <a href="Pessoas.html"><span class="material-icons">people</span> Cadastros</a>
+        <a href="Pets.html"><span class="material-icons">pets</span> Animais</a>
+        <a href="Adocao.html">
+          <span class="material-icons">article</span>
+          Adoção
+        </a>
+      </div>
+    </div>
   </nav>
 
-  <h2 style="margin-bottom: 0.2rem;">Pets disponíveis</h2>
-  <div id="listaPetsDisponiveis" style="margin-top: 0;"></div>
 
-  <h2 style="margin-bottom: 0.2rem;">Pets Adotados</h2>
-  <div id="listaPetsAdotados" style="margin-top: 0;"></div>
+  <main class="container">
+    <h1>Pets Disponíveis</h1>
+    <div id="listaPetsDisponiveis" class="pets-container"></div>
 
+    <h1>Pets Adotados</h1>
+    <div id="listaPetsAdotados" class="pets-container"></div>
+  </main>
 
 
   <a href="CadPet.html"><button class="button-newCad">Novo Cadastro</button></a>
 
+
+  <script src="/js/menu/MenuSite.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../js/validacao/listaPet.js"></script>
+    <script src="/js/validacao/listaPet.js"></script>
 </body>
 </html>
