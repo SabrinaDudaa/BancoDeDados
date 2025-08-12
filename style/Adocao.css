@@ -90,6 +90,26 @@ section {
   cursor: pointer;
 }
 
+/* ===== Novo: Destaque de linha selecionada (funciona em todas as telas) ===== */
+#tableAdotantes tbody tr.selected,
+#tableAdotantes tbody tr.selected td,
+#tablePets tbody tr.selected,
+#tablePets tbody tr.selected td {
+  background-color: #4a90e2 !important;
+  color: #fff !important;
+}
+
+#tableAdotantes tbody tr.selected:hover,
+#tablePets tbody tr.selected:hover {
+  background-color: #3a7bc8 !important;
+}
+
+/* Ajuste zebra striping para não sobrepor seleção */
+#tableAdotantes tbody tr:not(.selected):nth-of-type(even),
+#tablePets tbody tr:not(.selected):nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
 /* Estilo para o formulário */
 #formAdocao {
   background-color: white;
@@ -261,21 +281,6 @@ section {
   #tablePets tbody td::before {
     width: calc(50% - 15px);
   }
-
-#tableAdotantes tbody tr.selected {
-  background-color: #4a90e2 !important;
-  color: white;
-}
-
-#tablePets tbody tr.selected {
-  background-color: #4a90e2 !important;
-  color: white;
-}
-
-#tableAdotantes tbody tr.selected:hover,
-#tablePets tbody tr.selected:hover {
-  background-color: #3a7bc8 !important;
-}
   
   #formAdocao label {
     font-size: 14px;
