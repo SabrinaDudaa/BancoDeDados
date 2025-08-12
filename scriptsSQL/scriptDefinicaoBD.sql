@@ -40,6 +40,20 @@ CREATE TABLE Adotante (
             REFERENCES Pessoa(idPessoa)
 );
 
+CREATE TABLE Voluntario (
+    idVoluntario INT NOT NULL,
+        CONSTRAINT pkVoluntario PRIMARY KEY (idVoluntario),
+        CONSTRAINT fkVoluntarioPessoa FOREIGN KEY (idVoluntario)
+            REFERENCES Pessoa(idPessoa)
+);
+
+CREATE TABLE Doador (
+    idDoador INT NOT NULL,
+        CONSTRAINT pkDoador PRIMARY KEY (idDoador),
+        CONSTRAINT fkDoador FOREIGN KEY (idDoador)
+            REFERENCES Pessoa(idPessoa)
+);
+
 CREATE TABLE Pet(
     idPet SERIAL NOT NULL,
     Especie VARCHAR(100) NOT NULL,

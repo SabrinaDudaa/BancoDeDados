@@ -261,6 +261,21 @@ section {
   #tablePets tbody td::before {
     width: calc(50% - 15px);
   }
+
+#tableAdotantes tbody tr.selected {
+  background-color: #4a90e2 !important;
+  color: white;
+}
+
+#tablePets tbody tr.selected {
+  background-color: #4a90e2 !important;
+  color: white;
+}
+
+#tableAdotantes tbody tr.selected:hover,
+#tablePets tbody tr.selected:hover {
+  background-color: #3a7bc8 !important;
+}
   
   #formAdocao label {
     font-size: 14px;

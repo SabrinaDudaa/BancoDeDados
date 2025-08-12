@@ -113,20 +113,27 @@ function carregarPets() {
 }
 
 function selecionarLinha(tr, tipo) {
-  // Limpar seleção anterior
+  // Remove todas as seleções do mesmo tipo primeiro
+  const tabela = tipo === 'adotante' ? '#tableAdotantes' : '#tablePets';
+  document.querySelectorAll(`${tabela} tr.selected`).forEach(row => {
+    row.classList.remove('selected');
+  });
+
+  // Adiciona a seleção à linha clicada
+  tr.classList.add('selected');
+  
+  // Atualiza a variável correspondente
   if (tipo === 'adotante') {
-    document.querySelectorAll('#tableAdotantes tr.selected').forEach(row => {
-      row.classList.remove('selected');
-    });
-    tr.classList.add('selected');
     selecionadoAdotante = tr.dataset.id;
-  } else if (tipo === 'pet') {
-    document.querySelectorAll('#tablePets tr.selected').forEach(row => {
-      row.classList.remove('selected');
-    });
-    tr.classList.add('selected');
+    console.log('Adotante selecionado:', selecionadoAdotante);
+  } else {
     selecionadoPet = tr.dataset.id;
+    console.log('Pet selecionado:', selecionadoPet);
   }
+  
+  // Debug: verifica se a classe foi aplicada
+  console.log('Linha selecionada:', tr);
+  console.log('Classes da linha:', tr.classList);
 }
 
 function limparSelecao() {
